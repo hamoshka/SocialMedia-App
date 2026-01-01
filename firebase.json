@@ -1,1 +1,1 @@
-{}
+{"flutter":{"platforms":{"android":{"default":{"projectId":"com-agafielite-stage","appId":"1:266230068696:android:bd45b8f0dee979b773aead","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"com-agafielite-stage","configurations":{"android":"1:266230068696:android:bd45b8f0dee979b773aead","ios":"1:266230068696:ios:783f2cb789d1ee1d73aead","macos":"1:266230068696:ios:ed82a895c8bfdd4f73aead","web":"1:266230068696:web:db2a4091083558b273aead"}}}}}}
