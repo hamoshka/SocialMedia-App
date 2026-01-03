@@ -12,7 +12,20 @@
           "package_name": "com.example.social_media_app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "266230068696-latuhggn59cr1091859gh0lr5fflh0km.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.social_media_app",
+            "certificate_hash": "d82186de0e6a1e77690df3124dd6ad85565303d7"
+          }
+        },
+        {
+          "client_id": "266230068696-1o8ncqej036jv572ns8ovcn6fjem7cee.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDA-p3ZBTSMWJh-l27_wzE_OUaSgzDlIY4"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "266230068696-1o8ncqej036jv572ns8ovcn6fjem7cee.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "266230068696-7h5ctkib0l8ieibh6ibrlhsrd2f8rhqp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mikkyboy.app"
+              }
+            }
+          ]
         }
       }
     }
