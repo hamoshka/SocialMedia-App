@@ -81,13 +81,15 @@ class _ProfileState extends State<Profile> {
               background: StreamBuilder(
                 stream: usersRef.doc(widget.profileId).snapshots(),
                 builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-                  if (snapshot.hasData) {
-                    UserModel user = UserModel.fromJson(
-                      snapshot.data!.data() as Map<String, dynamic>,
-                    );
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
+                    if (snapshot.hasData) {
+                      final raw = snapshot.data?.data();
+                      if (raw is! Map<String, dynamic>) {
+                        return Container();
+                      }
+                      UserModel user = UserModel.fromJson(raw);
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -331,9 +333,9 @@ class _ProfileState extends State<Profile> {
                             onPressed: () async {
                               DocumentSnapshot doc =
                                   await usersRef.doc(widget.profileId).get();
-                              var currentUser = UserModel.fromJson(
-                                doc.data() as Map<String, dynamic>,
-                              );
+                              final raw = doc.data();
+                              if (raw is! Map<String, dynamic>) return;
+                              var currentUser = UserModel.fromJson(raw);
                               Navigator.push(
                                 context,
                                 CupertinoPageRoute(
@@ -444,7 +446,10 @@ class _ProfileState extends State<Profile> {
 
   handleUnfollow() async {
     DocumentSnapshot doc = await usersRef.doc(currentUserId()).get();
-    users = UserModel.fromJson(doc.data() as Map<String, dynamic>);
+    final raw = doc.data();
+    if (raw is Map<String, dynamic>) {
+      users = UserModel.fromJson(raw);
+    }
     setState(() {
       isFollowing = false;
     });
@@ -485,7 +490,10 @@ class _ProfileState extends State<Profile> {
 
   handleFollow() async {
     DocumentSnapshot doc = await usersRef.doc(currentUserId()).get();
-    users = UserModel.fromJson(doc.data() as Map<String, dynamic>);
+    final raw = doc.data();
+    if (raw is Map<String, dynamic>) {
+      users = UserModel.fromJson(raw);
+    }
     setState(() {
       isFollowing = true;
     });
@@ -530,8 +538,9 @@ class _ProfileState extends State<Profile> {
           .snapshots(),
       physics: NeverScrollableScrollPhysics(),
       itemBuilder: (_, DocumentSnapshot snapshot) {
-        PostModel posts =
-            PostModel.fromJson(snapshot.data() as Map<String, dynamic>);
+        final raw = snapshot.data();
+        if (raw is! Map<String, dynamic>) return const SizedBox.shrink();
+        PostModel posts = PostModel.fromJson(raw);
         return PostTile(
           post: posts,
         );
